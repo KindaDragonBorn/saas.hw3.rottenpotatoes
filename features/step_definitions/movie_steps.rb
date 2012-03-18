@@ -15,7 +15,10 @@ end
 Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   #  ensure that that e1 occurs before e2.
   #  page.content  is the entire content of the page as a string.
-  assert false, "Unimplmemented"
+  x = page.body.split(e1)
+  assert x.length == 3 # before title, before more info link, other content
+  x = x[2].split(e2)
+  assert x.length == 3
 end
 
 # Make it easier to express checking or unchecking several boxes at once
